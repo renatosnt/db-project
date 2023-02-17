@@ -8,18 +8,18 @@ class InputBuffer {
     size_t buffer_length;
     ssize_t input_length;
 
-    InputBuffer() {
-      buffer = "";
-      buffer_length = 0;
-      input_length = 0;
-    }
+    InputBuffer();
+    void read_input();
 
-    void read_input() {
-      std::getline(std::cin, buffer);
-      input_length = sizeof(buffer);
-      // if () {
-      //   std::cout << "Error reading input" << std::endl;
-      //   exit(EXIT_FAILURE);
-      // }
-    }
 };
+
+InputBuffer::InputBuffer() {
+  buffer = "";
+  buffer_length = 0;
+  input_length = 0;
+}
+
+void InputBuffer::read_input() {
+  std::getline(std::cin, buffer);
+  input_length = sizeof(buffer);
+}
