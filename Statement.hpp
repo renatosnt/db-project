@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstdint>
+#include <cstdio>
+
 #include "InputBuffer.hpp"
 
 #define COLUMN_USERNAME_SIZE 32 // varchar(32)
@@ -41,6 +43,10 @@ PrepareResult Statement::prepare_statement(InputBuffer* input_buffer) {
 
   if ((input_buffer->buffer).substr(0, 6) == "insert") {
     type = STATEMENT_INSERT;
+    
+    int args_assigned = sscanf(&input_buffer->buffer, "insert %d %s %s", row_to_insert.id, row_to_insert.username, row_to_insert.email);
+
+    std::cout << input_buffer->buffer << " teste ";
     return PREPARE_SUCCESS;
   }
 
